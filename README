@@ -1,0 +1,27 @@
+############################
+# Validation scripts setup #
+############################
+
+1. Have a Pentaho Data Integration installation fully configured to work on the cluster to be tested with
+
+This includes all the appropriate setup of the *-site.xml files and the hadoop shim version.
+
+2. Configure the .kettle/kettle.properties file with the appropriate connection settings inside the validation scripts folder
+
+There are some examples bundled, it should be very straightforward to setup connection and common hadoop settings.
+
+In the last part of the configuration file there are variables that setup the cluster destination folder for test file uploads and the tests
+to execute.
+
+3. Run the run_validations.sh script which is inside the validations scripts folder
+
+If needed chmod +x the script before executing.
+
+
+NOTES
+#####
+
+The Hbase test optionally requires the hbase shell utility to be in the machine the test is executing, and it will throw an error if not. If you are
+running these tests in a machine without the hbase shell utility, please run the following to create a table in hbase, where appropriate:
+
+create 'weblogs', 'pageviews'
